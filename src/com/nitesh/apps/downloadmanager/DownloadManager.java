@@ -82,8 +82,10 @@ public class DownloadManager {
 	 * @return the verified URL, null if invalid
 	 */
 	public static URL verifyURL(String fileURL) {
-		// Only allow HTTP URLs.
-        if (!fileURL.toLowerCase().startsWith("http://"))
+		// Only allow HTTP URLs and HTTPS URLs.
+		boolean isRightURL = fileURL.toLowerCase().startsWith("http://") 
+				|| fileURL.toLowerCase().startsWith("https://");
+        if (!isRightURL)
             return null;
         
         // Verify format of URL.
